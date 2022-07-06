@@ -15,6 +15,7 @@ export interface ITodo {
 export interface IRes {
     usd: string;
     eur: string;
+    uan?: string;
 
 }
 
@@ -30,3 +31,4 @@ export interface Tstate {
     firstSelect: number;
     secondSelect: number;
 }
+export type TMon = "eur" | "usd";

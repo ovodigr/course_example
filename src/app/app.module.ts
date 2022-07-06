@@ -8,7 +8,7 @@ import { ConversionComponent } from './conversion/conversion.component';
 import { CurrencyComponent } from './currency/currency.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { GetCourseService } from './service/get-course.service';
+import { GetCourseService } from './service/course.service';
 
 @NgModule({
   declarations: [

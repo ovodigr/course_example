@@ -17,5 +17,6 @@ export class GetCourseService {
   public courseState: IRes = {
     usd: '1',
     eur: '1',
+    uan: '1',
   }
 }

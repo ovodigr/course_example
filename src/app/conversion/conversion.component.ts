@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Value } from '../model/cource';
-import { GetCourseService } from '../service/get-course.service';
+import { Value, TMon, Tstate, IRes } from '../model/cource';
+import { GetCourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-conversion',
@@ -9,55 +9,70 @@ import { GetCourseService } from '../service/get-course.service';
 })
 export class ConversionComponent implements OnInit {
 
-  clickMessage = '';
+  constructor(public service: GetCourseService) { }
 
-  // @Input() value: Value
-  constructor(public service: GetCourseService) {
+  // calc(currencyState: Tstate, courseState: IRes, firstValue: TMon, secondValue: TMon, value: any) {
 
-  }
+  //   currencyState.firstInput = value;
 
-  clicks: number = 0;
-  change(increased: any) {
-    console.log(increased);
+  //   let res = value * (parseFloat(courseState[firstValue]) / parseFloat(courseState[secondValue]));
 
-    // increased == true ? this.clicks++ : this.clicks--;
-  }
+  //   currencyState.secondInput = +res.toFixed(2);
 
-  // public currencyState: Tstate = {
-  //   firstInput: '1',
-  //   secondInput: '1',
-  //   firstSelect: '0',
-  //   secondSelect: '2',
   // }
 
-  // public courseState: IRes = {
-  //   usd: '0',
-  //   eur: '1',
-  // }
+  onKeypress(input: string, event: any) {
 
-  //     this.service.courseState = {
-  //   'usd': res[0].buy,
-  //   'eur': res[1].buy,
-  // }
+    // this.calc();
 
-  OnChanges(input: string, value: string | any) {
+    let money = ["usd", "eur", "uan"];
 
-    // console.log(value.target.id, type);
-    console.log(value.target.value);
+    let { value } = event.target;
+
+    let { currencyState, courseState } = this.service;
+
+    let firstSelectValue: TMon = money[currencyState.firstSelect] as TMon;
+
+    let secondSelectValue: TMon = money[currencyState.secondSelect] as TMon;
 
     if (input == 'first') {
-      let { usd, eur } = this.service.courseState;
 
-      this.service.currencyState.secondInput = value.target.value * parseInt(usd);
+      currencyState.firstInput = value;
 
-      console.log(this.service.currencyState);
+      let res = value * (parseFloat(courseState[firstSelectValue]) / parseFloat(courseState[secondSelectValue]));
 
-      // let arr = [usd, eur, usd]
+      currencyState.secondInput = +res.toFixed(2);
+    }
+    else {
+      {
+        currencyState.secondInput = value;
+
+        let res = value * (parseFloat(courseState[secondSelectValue]) / parseFloat(courseState[firstSelectValue]));
+
+        currencyState.firstInput = +res.toFixed(2);
+      }
+    }
+  }
+
+  OnChanges(input: string, elem: string | any) {
+
+    let money = ["usd", "eur", "uan"];
+
+    let { value } = elem.target;
+
+    let { currencyState } = this.service;
+
+    if (input == 'first') {
+
+      if (money.includes(value)) {
+        currencyState.firstSelect = money.findIndex(item => item === value);
+      }
     }
     else {
 
-      let { usd, eur } = this.service.courseState;
-      this.service.currencyState.firstInput = value.target.value * parseInt(usd);
+      if (money.includes(value)) {
+        currencyState.secondSelect = money.findIndex(item => item === value);;
+      }
     }
   }
 
