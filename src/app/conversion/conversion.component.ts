@@ -39,14 +39,17 @@ export class ConversionComponent implements OnInit {
 
     let secondSelectValue: TMon = currencyState.secondSelect as TMon;
 
-    if (input == 'first') {
-      this.calc(currencyState, 'firstSelect', 'firstInput', 'secondInput',
-        firstSelectValue, secondSelectValue, courseState, value);
+    if (value != 'USD' && value != 'EUR' && value != 'UAN') {
+      if (input == 'first') {
+        this.calc(currencyState, 'firstSelect', 'firstInput', 'secondInput',
+          firstSelectValue, secondSelectValue, courseState, value);
+      }
+      else {
+        this.calc(currencyState, 'secondSelect', 'secondInput', 'firstInput',
+          secondSelectValue, firstSelectValue, courseState, value);
+      }
     }
-    else {
-      this.calc(currencyState, 'secondSelect', 'secondInput', 'firstInput',
-        secondSelectValue, firstSelectValue, courseState, value);
-    }
+
   }
 
   OnChanges(input: string, elem: string | any) {
@@ -72,5 +75,4 @@ export class ConversionComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

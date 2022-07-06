@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { TNum } from '../model/cource';
-
-import { GetCourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-currency',
