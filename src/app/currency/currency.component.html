@@ -1,0 +1,9 @@
+<p>
+    <input class="currency" type="text" value={{money}}>
+
+    <select formControlName="country">
+    <option   disabled>Select type</option>
+    <option *ngFor="let country of moneySelect" [value]="country.id">{{country.name}}</option>
+  </select>
+
+</p>

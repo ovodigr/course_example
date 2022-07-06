@@ -1,0 +1,11 @@
+.wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid #7922CC;
+    border-radius: 25px;
+    background-color: rgb(66, 235, 75);
+    margin-top: 50px;
+    padding: 50px 0 50px;
+}

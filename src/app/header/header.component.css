@@ -1,0 +1,20 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 6px solid #7922CC;
+    border-radius: 25px;
+    background-color: rgb(237, 238, 168);
+    margin-top: 50px;
+    padding: 50px 0 50px;
+}
+
+.headerСourse {
+    border: 1px solid #7922CC;
+    background-color: rgb(27, 226, 240);
+    border-radius: 2px;
+    margin: 10px 10px;
+    font-size: 20px;
+    box-shadow: 12px 12px 2px 1px rgba(30, 30, 202, 0.2);
+}

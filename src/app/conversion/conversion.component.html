@@ -1,0 +1,6 @@
+<div class="wrap">
+    <div class="conversion">
+        <app-currency (change)="OnChanges('first',  $event)" [money]="service.currencyState.firstInput "></app-currency>
+        <app-currency (change)="OnChanges('second', $event)" [money]="service.currencyState.secondInput"></app-currency>
+    </div>
+</div>
