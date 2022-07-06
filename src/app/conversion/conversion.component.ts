@@ -39,8 +39,8 @@ export class ConversionComponent implements OnInit {
 
     let secondSelectValue: TMon = currencyState.secondSelect as TMon;
 
-    if (value != 'USD' && value != 'EUR' && value != 'UAN') {
-      if (input == 'first') {
+    if (value !== 'USD' && value !== 'EUR' && value !== 'UAN') {
+      if (input === 'first') {
         this.calc(currencyState, 'firstSelect', 'firstInput', 'secondInput',
           firstSelectValue, secondSelectValue, courseState, value);
       }
