@@ -1,4 +1,4 @@
 <div class="header">
-    <p class="headerСourse">1 USD = {{service.courseState.usd | number:'1.2' }} UAH</p>
-    <p class="headerСourse">1 EUR = {{service.courseState.eur | number:'1.2'}} UAH</p>
+    <p class="headerСourse">1 USD = {{service.courseState['buy'].usd | number:'1.2' }}UAH : {{service.courseState['sale'].usd | number:'1.2' }}UAH</p>
+    <p class="headerСourse">1 EUR = {{service.courseState['buy'].eur | number:'1.2'}}UAH : {{service.courseState['sale'].eur | number:'1.2'}}UAH</p>
 </div>

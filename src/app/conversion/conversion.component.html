@@ -1,4 +1,6 @@
 <div class="wrap">
+
+    <span class="hint">Please, pick currency and input need count of money  </span>
     <div class="conversion">
         <app-currency (keyup)="onKeypress('first', $event)" (change)="OnChanges('first',  $event)" [money]="service.currencyState.firstInput "></app-currency>
         <app-currency (keyup)="onKeypress('second',$event)" (change)="OnChanges('second', $event)" [money]="service.currencyState.secondInput"></app-currency>

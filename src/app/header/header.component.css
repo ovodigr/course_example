@@ -11,10 +11,12 @@
 }
 
 .headerСourse {
+    padding: 10px 10px;
     border: 1px solid #7922CC;
     background-color: rgb(27, 226, 240);
     border-radius: 2px;
     margin: 10px 10px;
     font-size: 20px;
     box-shadow: 12px 12px 2px 1px rgba(30, 30, 202, 0.2);
+    text-align: center;
 }

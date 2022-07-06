@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Value, TMon, Tstate, IRes } from '../model/cource';
+import { Component, OnInit } from '@angular/core';
+import { TMon, Tstate, ICource, TInput, TSelect } from '../model/cource';
 import { GetCourseService } from '../service/course.service';
 
 @Component({
@@ -11,46 +11,41 @@ export class ConversionComponent implements OnInit {
 
   constructor(public service: GetCourseService) { }
 
-  // calc(currencyState: Tstate, courseState: IRes, firstValue: TMon, secondValue: TMon, value: any) {
+  calc(currencyState: Tstate, select: TSelect, firstInput: TInput, secondInput: TInput,
+    first: TMon, second: TMon, courseState: ICource, value: any) {
 
-  //   currencyState.firstInput = value;
+    let typeCurrency: keyof ICource;
 
-  //   let res = value * (parseFloat(courseState[firstValue]) / parseFloat(courseState[secondValue]));
+    if (currencyState[select] === 'uan')
+      typeCurrency = 'sale';
+    else
+      typeCurrency = 'buy';
 
-  //   currencyState.secondInput = +res.toFixed(2);
+    let res = value * (parseFloat(courseState[typeCurrency][first]) /
+      parseFloat(courseState[typeCurrency][second]));
 
-  // }
+    currencyState[firstInput] = value;
+
+    currencyState[secondInput] = +res.toFixed(3);
+  }
 
   onKeypress(input: string, event: any) {
-
-    // this.calc();
-
-    let money = ["usd", "eur", "uan"];
 
     let { value } = event.target;
 
     let { currencyState, courseState } = this.service;
 
-    let firstSelectValue: TMon = money[currencyState.firstSelect] as TMon;
+    let firstSelectValue: TMon = currencyState.firstSelect as TMon;
 
-    let secondSelectValue: TMon = money[currencyState.secondSelect] as TMon;
+    let secondSelectValue: TMon = currencyState.secondSelect as TMon;
 
     if (input == 'first') {
-
-      currencyState.firstInput = value;
-
-      let res = value * (parseFloat(courseState[firstSelectValue]) / parseFloat(courseState[secondSelectValue]));
-
-      currencyState.secondInput = +res.toFixed(2);
+      this.calc(currencyState, 'firstSelect', 'firstInput', 'secondInput',
+        firstSelectValue, secondSelectValue, courseState, value);
     }
     else {
-      {
-        currencyState.secondInput = value;
-
-        let res = value * (parseFloat(courseState[secondSelectValue]) / parseFloat(courseState[firstSelectValue]));
-
-        currencyState.firstInput = +res.toFixed(2);
-      }
+      this.calc(currencyState, 'secondSelect', 'secondInput', 'firstInput',
+        secondSelectValue, firstSelectValue, courseState, value);
     }
   }
 
@@ -60,18 +55,17 @@ export class ConversionComponent implements OnInit {
 
     let { value } = elem.target;
 
+    value = value.toLowerCase();
+
     let { currencyState } = this.service;
 
-    if (input == 'first') {
+    if (money.includes(value)) {
 
-      if (money.includes(value)) {
-        currencyState.firstSelect = money.findIndex(item => item === value);
+      if (input === 'first') {
+        currencyState.firstSelect = value;
       }
-    }
-    else {
-
-      if (money.includes(value)) {
-        currencyState.secondSelect = money.findIndex(item => item === value);;
+      else {
+        currencyState.secondSelect = value;
       }
     }
   }

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Str } from '../model/cource';
+import { TNum } from '../model/cource';
 
 import { GetCourseService } from '../service/course.service';
 
@@ -17,8 +17,8 @@ export class CurrencyComponent implements OnInit {
     { id: "uan", name: "UAN" },
   ];
 
-  @Input() money: Str
-  constructor(private http: HttpClient, private service: GetCourseService) {
+  @Input() money: TNum
+  constructor() {
     this.money = 0;
   }
 
