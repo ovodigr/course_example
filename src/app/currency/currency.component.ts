@@ -4,7 +4,7 @@ import { TNum } from '../model/cource';
 @Component({
   selector: 'app-currency',
   templateUrl: './currency.component.html',
-  styleUrls: ['./currency.component.css']
+  styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
 
@@ -22,6 +22,10 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  click() {
+    console.log('1');
   }
 
 }

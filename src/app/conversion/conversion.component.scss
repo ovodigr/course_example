@@ -1,0 +1,32 @@
+ @import '../css/values.scss';
+ @mixin code {
+     border: 1px solid #7922CC;
+     background-color: rgb(27, 226, 240);
+     border-radius: 2px;
+     margin: 10px 10px;
+     padding: 10px 10px;
+     font-size: $conversionFontSize;
+     box-shadow: 12px 12px 2px 1px rgba(30, 30, 202, 0.2);
+ }
+ 
+ .wrap {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     border: 6px solid #7922CC;
+     border-radius: 25px;
+     background-color: rgb(66, 235, 75);
+     margin-top: 50px;
+     padding: 50px 0 50px;
+     //
+     .hint {
+         font-size: 22px;
+         text-align: center;
+         @include code;
+     }
+     //
+     .conversion {
+         @include code;
+     }
+ }

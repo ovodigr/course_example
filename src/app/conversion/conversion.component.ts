@@ -5,7 +5,7 @@ import { GetCourseService } from '../service/course.service';
 @Component({
   selector: 'app-conversion',
   templateUrl: './conversion.component.html',
-  styleUrls: ['./conversion.component.css']
+  styleUrls: ['./conversion.component.scss']
 })
 export class ConversionComponent implements OnInit {
 
